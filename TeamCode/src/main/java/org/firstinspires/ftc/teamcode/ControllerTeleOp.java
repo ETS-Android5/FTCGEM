@@ -11,7 +11,7 @@ import com.qualcomm.robotcore.util.Range;
 
 
 @TeleOp(name = "ControllerTeleOp", group = "TeleOps")
-
+// registry
 
 
 public class ControllerTeleOp extends OpMode {
