@@ -79,22 +79,25 @@ public class Main  extends OpMode{
         motorLeft.setPower(left);
 
         arm.setPower(0.0);
-
-        if (gamepad1.a) {
+        boolean apressed = gamepad1.a;
+        boolean ypressed = gamepad1.y;
+        boolean bpressed = gamepad1.b;
+        boolean xpressed = gamepad1.x;
+        if (apressed) {
             arm.setPower(0.10);
         }
 
-        if (gamepad1.y) {
+        if (ypressed) {
             arm.setPower(-0.20);
         }
 
-        if (gamepad1.x) {
+        if (xpressed) {
             claw_1Position += clawDelta;
             claw_2Position -= clawDelta;
 
         }
 
-        if (gamepad1.b) {
+        if (bpressed) {
             claw_1Position -= clawDelta;
             claw_2Position += clawDelta;
         }
