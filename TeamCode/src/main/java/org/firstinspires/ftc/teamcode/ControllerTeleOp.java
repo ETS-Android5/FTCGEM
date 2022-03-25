@@ -5,7 +5,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.Range;
 
-public class Main  extends OpMode{
+public class ControllerTeleOp extends OpMode {
     final static double CLAW_MIN_RANGE = 0.0;
     final static double CLAW_MAX_RANGE = 1.0;
 
@@ -52,6 +52,7 @@ public class Main  extends OpMode{
         claw_2Position = 0.9;
 
     }
+
     @Override
     public void loop() {
 
@@ -72,8 +73,8 @@ public class Main  extends OpMode{
         right = Range.clip(right, -1, 1);
         left = Range.clip(left, -1, 1);
 
-        right = (float)scaleInput(right);
-        left =  (float)scaleInput(left);
+        right = (float) scaleInput(right);
+        left = (float) scaleInput(left);
 
         motorRight.setPower(right);
         motorLeft.setPower(left);
@@ -108,6 +109,7 @@ public class Main  extends OpMode{
         claw_1.setPosition(claw_1Position);
         claw_2.setPosition(claw_2Position);
     }
+
     @Override
     public void stop() {
         motorRight.setPower(0.0);
@@ -117,9 +119,9 @@ public class Main  extends OpMode{
     }
 
 
-    double scaleInput(double dVal)  {
-        double[] scaleArray = { 0.0, 0.05, 0.09, 0.10, 0.12, 0.15, 0.18, 0.24,
-                0.30, 0.36, 0.43, 0.50, 0.60, 0.72, 0.85, 1.00, 1.00 };
+    double scaleInput(double dVal) {
+        double[] scaleArray = {0.0, 0.05, 0.09, 0.10, 0.12, 0.15, 0.18, 0.24,
+                0.30, 0.36, 0.43, 0.50, 0.60, 0.72, 0.85, 1.00, 1.00};
 
         int index = (int) (dVal * 16.0);
 
