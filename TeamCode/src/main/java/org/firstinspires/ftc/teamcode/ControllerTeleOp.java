@@ -10,7 +10,7 @@ import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.Range;
 
 
-@TeleOp(name = "ControllerTeleOp", group = "TeleOp")
+@TeleOp(name = "ControllerTeleOp", group = "TeleOps")
 
 
 
