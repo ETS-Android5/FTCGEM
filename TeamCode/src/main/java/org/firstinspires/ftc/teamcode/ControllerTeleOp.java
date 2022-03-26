@@ -1,5 +1,4 @@
 
-// Made by Isaaq Khanooni
 
 package org.firstinspires.ftc.teamcode;
 
