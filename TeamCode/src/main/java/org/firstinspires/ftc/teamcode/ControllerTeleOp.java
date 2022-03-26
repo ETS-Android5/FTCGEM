@@ -15,6 +15,8 @@ import com.qualcomm.robotcore.util.Range;
 
 
 public class ControllerTeleOp extends OpMode {
+    int xpos = 0;
+    int zpos = 0;
     final static double CLAW_MIN_RANGE = 0.0;
     final static double CLAW_MAX_RANGE = 1.0;
 
@@ -59,6 +61,9 @@ public class ControllerTeleOp extends OpMode {
 
         claw_1Position = -0.5;
         claw_2Position = 0.9;
+        // get the position of robot
+
+
 
     }
 
@@ -66,13 +71,62 @@ public class ControllerTeleOp extends OpMode {
     public void loop() {
 
         float throttle = 0;
+        double Ydir = gamepad1.left_stick_y;
+        boolean Yup = Ydir == -1;
+        double Xdir = gamepad1.left_stick_x;
+        boolean Xright = Xdir == 1;
+
 
         if (gamepad1.left_trigger > 0) {
+            // backward
             throttle = -gamepad1.left_trigger;
+            if (Yup){
+                // backward
+                xpos = xpos-1;
+                telemetry.addData("X Position : ", xpos + "Z Position : " + zpos);
+            }
+            if(!Yup){
+                // forward
+                xpos = xpos+1;
+                telemetry.addData("X Position : ", xpos + "Z Position : " + zpos);
+            }
+            if (Xright){
+                // right
+                zpos = zpos+1;
+                telemetry.addData("X Position : ", xpos + "Z Position : " + zpos);
+            }
+            if (!Xright){
+                // left
+                zpos = zpos-1;
+                telemetry.addData("X Position : ", xpos + "Z Position : " + zpos);
+            }
+
+
         }
 
         if (gamepad1.right_trigger > 0) {
+            // forward
             throttle = gamepad1.right_trigger;
+            if (Yup){
+                // backward
+                xpos = xpos-1;
+                telemetry.addData("X Position : ", xpos + "Z Position : " + zpos);
+            }
+            if(!Yup){
+                // forward
+                xpos = xpos+1;
+                telemetry.addData("X Position : ", xpos + "Z Position : " + zpos);
+            }
+            if (Xright){
+                // right
+                zpos = zpos+1;
+                telemetry.addData("X Position : ", xpos + "Z Position : " + zpos);
+            }
+            if (!Xright){
+                // left
+                zpos = zpos-1;
+                telemetry.addData("X Position : ", xpos + "Z Position : " + zpos);
+            }
         }
 
         float direction = gamepad1.left_stick_x;
@@ -117,6 +171,7 @@ public class ControllerTeleOp extends OpMode {
 
         claw_1.setPosition(claw_1Position);
         claw_2.setPosition(claw_2Position);
+        telemetry.clearAll();
     }
 
     @Override
