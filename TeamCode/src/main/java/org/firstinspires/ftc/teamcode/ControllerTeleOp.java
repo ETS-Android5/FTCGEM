@@ -170,7 +170,6 @@ public class ControllerTeleOp extends OpMode {
 
         claw_1.setPosition(claw_1Position);
         claw_2.setPosition(claw_2Position);
-        telemetry.clearAll();
     }
 
     @Override
